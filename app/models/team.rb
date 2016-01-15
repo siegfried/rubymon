@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
   private
   def three_teams_at_most
     unless user.teams.count < MAX
-      errors.add :base, 'cannot have more than 3 teams'
+      errors.add :base, "cannot have more than #{MAX} teams"
     end
   end
 end
