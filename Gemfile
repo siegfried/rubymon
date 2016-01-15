@@ -46,7 +46,6 @@ group :development do
 end
 
 
-gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'omniauth'
@@ -56,6 +55,10 @@ gem 'puma'
 gem 'pundit'
 gem 'simple_form'
 gem 'responders'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-semantic'
+end
 
 group :development do
   gem 'better_errors'

@@ -1,0 +1,16 @@
+%a.header.item{:href => root_path}
+  %img.logo{:src => '/assets/logo.png'}
+
+.right.menu
+  - if current_user.present?
+    .item
+      = current_user.uid
+    .item
+      %a.ui.negative.labeled.icon.button{href: sign_out_path, data: { method: 'delete' }}
+        %i.sign.out.icon
+        Sign out
+  - else
+    .item
+      %a.ui.facebook.button{href: '/auth/facebook'}
+        %i.facebook.icon
+        Sign in
