@@ -295,6 +295,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   evil_utils
+  factory_girl
   factory_girl_rails
   faker
   haml-rails

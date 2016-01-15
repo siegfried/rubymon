@@ -76,6 +76,7 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'factory_girl'
 end
 
 group :production do
