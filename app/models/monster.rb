@@ -1,5 +1,6 @@
 class Monster < ActiveRecord::Base
   CATEGORIES = %w{fire water earth electric wind}
+  MAX = 20
 
   belongs_to :user
   belongs_to :team
@@ -11,4 +12,12 @@ class Monster < ActiveRecord::Base
 
   validates :name, :category, :power, presence: true
   validates :category, inclusion: { in: CATEGORIES }
+  validate :twenty_monsters_at_most
+
+  private
+  def twenty_monsters_at_most
+    unless user.monsters.count < MAX
+      errors.add :base, "cannot have more than #{MAX} monsters"
+    end
+  end
 end

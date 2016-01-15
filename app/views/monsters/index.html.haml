@@ -1,7 +1,8 @@
 %h1 Listing monsters
 
 %p
-  = link_to 'New Monster', new_monster_path, class: 'ui primary button'
+  - if can_create_monster?
+    = link_to 'New Monster', new_monster_path, class: 'ui primary button'
 
 %table.ui.table
   %thead
