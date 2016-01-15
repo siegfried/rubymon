@@ -14,6 +14,21 @@ class Monster < ActiveRecord::Base
   validates :category, inclusion: { in: CATEGORIES }
   validate :twenty_monsters_at_most
 
+  def weakness
+    case category
+    when 'fire'
+      'water'
+    when 'water'
+      'earth'
+    when 'earth'
+      'electric'
+    when 'electric'
+      'wind'
+    when 'wind'
+      'fire'
+    end
+  end
+
   private
   def twenty_monsters_at_most
     unless user.monsters.count < MAX
