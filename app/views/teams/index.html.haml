@@ -1,7 +1,8 @@
 %h1 Listing teams
 
 %p
-  = link_to 'New Team', new_team_path, class: 'ui primary button'
+  - if can_create_team?
+    = link_to 'New Team', new_team_path, class: 'ui primary button'
 
 .ui.horizontal.segments
   = render @teams
