@@ -1,5 +1,6 @@
+- content_for :actions do
+  = link_to 'Back', teams_path, class: 'ui button'
+
 %h1 New team
 
 = render 'form'
-
-= link_to 'Back', teams_path

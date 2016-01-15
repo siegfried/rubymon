@@ -51,17 +51,28 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
+  config.wrappers :semantic, tag: 'div', class: "field", error_class: 'error', hint_class: 'with_hint' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label_input
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.use :hint,  wrap_with: { tag: 'div', class: 'hint' }
+    b.use :error, wrap_with: { tag: 'div', class: 'ui red pointing above label error' }
+  end
+
   # The default wrapper to be used by the FormBuilder.
-  config.default_wrapper = :default
+  config.default_wrapper = :semantic
 
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = 'ui submit button'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -72,7 +83,7 @@ SimpleForm.setup do |config|
   config.error_notification_tag = :div
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'error_notification'
+  config.error_notification_class = 'ui negative message'
 
   # ID to add for error notification helper.
   # config.error_notification_id = nil
@@ -104,7 +115,7 @@ SimpleForm.setup do |config|
 
   # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.
-  # config.default_form_class = nil
+  config.default_form_class = 'ui form'
 
   # You can define which elements should obtain additional classes
   # config.generate_additional_classes_for = [:wrapper, :label, :input]

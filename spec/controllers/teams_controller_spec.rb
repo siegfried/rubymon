@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe TeamsController, :type => :controller do
 
+  before { sign_in user }
+
+  let!(:user) { team.user }
   let!(:team) { create :team }
   let(:teams_params) { {} }
   let(:team_params) { teams_params.merge(id: team.to_param) }

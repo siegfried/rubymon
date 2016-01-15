@@ -1,7 +1,7 @@
+- content_for :actions do
+  = link_to 'Show', @team, class: 'ui button'
+  = link_to 'Back', teams_path, class: 'ui button'
+
 %h1 Editing team
 
 = render 'form'
-
-= link_to 'Show', @team
-\|
-= link_to 'Back', teams_path

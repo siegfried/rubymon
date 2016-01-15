@@ -55,6 +55,7 @@ gem 'puma'
 gem 'pundit'
 gem 'simple_form'
 gem 'responders'
+gem 'devise'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-semantic'
