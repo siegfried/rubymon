@@ -5,8 +5,6 @@ class Monster < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
-  enum category: CATEGORIES
-
   delegate :teams, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :team, prefix: true, allow_nil: true
 
@@ -14,7 +12,21 @@ class Monster < ActiveRecord::Base
   validates :category, inclusion: { in: CATEGORIES }
   validate :twenty_monsters_at_most
 
-  def weakness
+  after_validation :set_weakness
+
+  private
+
+  def twenty_monsters_at_most
+    unless user.monsters.count < MAX
+      errors.add :base, "cannot have more than #{MAX} monsters"
+    end
+  end
+
+  def set_weakness
+    self.weakness = weakness_for(category)
+  end
+
+  def weakness_for(category)
     case category
     when 'fire'
       'water'
@@ -26,13 +38,6 @@ class Monster < ActiveRecord::Base
       'wind'
     when 'wind'
       'fire'
-    end
-  end
-
-  private
-  def twenty_monsters_at_most
-    unless user.monsters.count < MAX
-      errors.add :base, "cannot have more than #{MAX} monsters"
     end
   end
 end
