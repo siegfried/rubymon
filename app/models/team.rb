@@ -4,5 +4,6 @@ class Team < ActiveRecord::Base
   belongs_to :user
   has_many :monsters
 
-  validates :name, presence: true
+  validates :name, :description, presence: true
+  validates :name, uniqueness: true
 end
