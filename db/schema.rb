@@ -22,6 +22,6 @@ ActiveRecord::Schema.define(version: 20160115063832) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
 end
