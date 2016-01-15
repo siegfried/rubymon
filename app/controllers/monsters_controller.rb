@@ -4,6 +4,8 @@ class MonstersController < ApplicationController
   before_action :set_monster, only: [:show, :edit, :update, :destroy]
 
   def index
+    @q = @monsters.ransack(params[:q])
+    @monsters = @q.result
     respond_with(@monsters)
   end
 

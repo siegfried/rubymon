@@ -7,9 +7,9 @@
 %table.ui.table
   %thead
     %tr
-      %th Name
-      %th Power
-      %th Category
+      %th= sort_link @q, :name
+      %th= sort_link @q, :power
+      %th= sort_link @q, :category
       %th Weakness
       %th Team
       %th

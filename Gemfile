@@ -56,6 +56,7 @@ gem 'pundit'
 gem 'simple_form'
 gem 'responders'
 gem 'devise'
+gem 'ransack'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-semantic'
