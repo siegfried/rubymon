@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :monsters
   root 'home#root'
   resources :teams
   devise_for :users, path: 'accounts', controllers: { omniauth_callbacks: "omniauth_callbacks" }

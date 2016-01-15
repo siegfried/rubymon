@@ -5,6 +5,10 @@
   %a.item{href: teams_path}
     Teams
 
+- if can_read_monsters?
+  %a.item{href: monsters_path}
+    Monsters
+
 .right.menu
   - if current_user.present?
     .item

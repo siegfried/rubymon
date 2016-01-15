@@ -1,0 +1,25 @@
+%h1 Listing monsters
+
+%p
+  = link_to 'New Monster', new_monster_path, class: 'ui primary button'
+
+%table.ui.table
+  %thead
+    %tr
+      %th Name
+      %th Power
+      %th Category
+      %th Team
+      %th
+
+  %tbody
+    - @monsters.each do |monster|
+      %tr
+        %td= monster.name
+        %td= monster.power
+        %td= monster.category
+        %td= monster.team_name
+        %td
+          = link_to 'Show', monster, class: 'ui mini button'
+          = link_to 'Edit', edit_monster_path(monster), class: 'ui mini button'
+          = link_to 'Destroy', monster, :method => :delete, class: 'ui mini negative button', :data => { :confirm => 'Are you sure?' }

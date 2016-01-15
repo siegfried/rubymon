@@ -1,0 +1,8 @@
+= simple_form_for(@monster) do |f|
+  = f.error_notification
+  = f.input :name
+  = f.input :power
+  = f.input :category, collection: Monster::CATEGORIES
+  = f.association :team, collection: @monster.user_teams
+  = f.button :submit, class: 'primary'
+  = yield :actions

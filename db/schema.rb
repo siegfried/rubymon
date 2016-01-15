@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115075834) do
+ActiveRecord::Schema.define(version: 20160115132118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "monsters", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "power"
+    t.integer  "category"
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "monsters", ["team_id"], name: "index_monsters_on_team_id", using: :btree
+  add_index "monsters", ["user_id"], name: "index_monsters_on_user_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -34,5 +47,7 @@ ActiveRecord::Schema.define(version: 20160115075834) do
 
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
+  add_foreign_key "monsters", "teams"
+  add_foreign_key "monsters", "users"
   add_foreign_key "teams", "users"
 end
